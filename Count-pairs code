@@ -1,0 +1,58 @@
+import java.io.*;
+import java.util.*;
+class abc
+{
+	public int first(int arr[],int i)
+	{
+		if(i<arr.length)
+		{
+			return arr[i];
+		}
+		return first(arr,i);
+	}
+	public int count(int arr[],int i,int k)
+	{
+		int sum,count=0,a,j;
+		for(j=i+1;j<arr.length;j++)
+		{
+			a=first(arr,i);
+			sum=a+arr[j];
+			if(sum==k)
+			{
+				count++;
+			}
+		}
+		return count;
+
+	}
+	
+	public static void main(String args[])
+	{
+		abc obj=new abc();
+		Scanner sc=new Scanner(System.in);
+		int N,k,t,i,r,ty=0;
+		System.out.println("Enter the test Cases");
+		t=sc.nextInt();
+		while(t-->0)
+		{
+			ty=0;
+			System.out.println("Enter the length of an array");
+			N=sc.nextInt();
+			System.out.println("Enter the sum");
+			k=sc.nextInt();
+			int arr[]=new int[N];
+			for(i=0;i<N;i++)
+			{
+				arr[i]=sc.nextInt();
+			}
+			for(i=0;i<N;i++)
+			{
+				r=obj.count(arr,i,k);
+				ty=ty+r;
+			}
+			System.out.println("Total pairs="+ty);
+		}
+		
+	}
+
+}
